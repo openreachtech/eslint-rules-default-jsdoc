@@ -1,950 +1,690 @@
 'use strict'
 
-const js = require('@eslint/js')
+const jsdocPlugin = require('eslint-plugin-jsdoc')
 
 module.exports = {
+  plugins: {
+    jsdoc: jsdocPlugin,
+  },
   rules: {
-    ...js.configs
-      .all
-      .rules,
-
-    'accessor-pairs': [
+    'jsdoc/check-access': [
+      'error',
+    ],
+    'jsdoc/check-alignment': [
+      'error',
+    ],
+    'jsdoc/check-indentation': [
       'error',
       {
-        setWithoutGet: true,
-        getWithoutSet: false,
-        enforceForClassMembers: true,
+        excludeTags: [
+          'example',
+          'param',
+          'returns',
+          'type',
+          'typedef',
+          'yields',
+        ],
       },
     ],
-    'array-callback-return': [
+    'jsdoc/check-line-alignment': [
+      'error',
+      'never',
+      {
+        tags: [
+          'param',
+          'arg',
+          'argument',
+          'property',
+          'prop',
+          'returns',
+          'return',
+        ],
+        customSpacings: [
+          {
+            postDelimiter: 1,
+          },
+          {
+            postTag: 1,
+          },
+          {
+            postType: 1,
+          },
+          {
+            postName: 1,
+          },
+          {
+            postHyphen: 1,
+          },
+        ],
+        preserveMainDescriptionPostDelimiter: false,
+        wrapIndent: '',
+      },
+    ],
+    'jsdoc/check-param-names': [
       'error',
       {
-        allowImplicit: false,
-        checkForEach: false,
+        allowExtraTrailingParamDocs: false,
+        checkDestructured: true,
+        checkRestProperty: false,
+        checkTypesPattern: '/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/',
+        enableFixer: false,
+        disableExtraPropertyReporting: false,
+        useDefaultObjectProperties: false,
       },
     ],
-    'arrow-body-style': [
-      'error',
-      'as-needed',
-      {
-        requireReturnForObjectLiteral: false,
-      },
-    ],
-    'block-scoped-var': [
-      'error',
-    ],
-    camelcase: [
+    'jsdoc/check-property-names': [
       'error',
       {
-        properties: 'always',
-        ignoreDestructuring: false,
-        ignoreImports: false,
-        ignoreGlobals: false,
-        allow: [],
+        enableFixer: false,
       },
     ],
-    'capitalized-comments': [
+    'jsdoc/check-syntax': [
+      'error',
+    ],
+    'jsdoc/check-tag-names': [
+      'error',
+      {
+        definedTags: [],
+        enableFixer: true,
+        jsxTags: false,
+        typed: false,
+      },
+    ],
+    'jsdoc/check-types': [
+      'error',
+      {
+        noDefaults: false,
+        unifyParentAndChildTypeChecks: false,
+        exemptTagContexts: [],
+      },
+    ],
+    'jsdoc/check-values': [
+      'error',
+      {
+        allowedAuthors: [],
+        allowedLicenses: [],
+        numericOnlyVariation: false,
+        licensePattern: '/([^\\\\n\\\\r]*)/gu',
+      },
+    ],
+    'jsdoc/empty-tags': [
+      'error',
+      {
+        tags: [],
+      },
+    ],
+    'jsdoc/implements-on-classes': [
+      'error',
+      {
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/imports-as-dependencies': [
+      'error',
+    ],
+    'jsdoc/informative-docs': [
+      'error',
+      {
+        aliases: [
+          'an',
+          'our',
+        ],
+        uselessWords: [
+          'a',
+          'an',
+          'i',
+          'in',
+          'of',
+          's',
+          'the',
+        ],
+      },
+    ],
+    'jsdoc/match-description': [
+      'error',
+      {
+        mainDescription: true,
+        matchDescription: '^\\n?([A-Z`\\d_][\\s\\S]*[.?!`]\\s*)?$',
+        message: 'JSDoc description does not satisfy the regex pattern.',
+        nonemptyTags: true,
+        tags: {},
+      },
+    ],
+    'jsdoc/match-name': [
+      'error',
+      {
+        match: [],
+      },
+    ],
+    'jsdoc/multiline-blocks': [
+      'error',
+      {
+        allowMultipleTags: true,
+        minimumLengthForMultiline: Infinity,
+        multilineTags: [
+          '*',
+        ],
+        noFinalLineText: true,
+        noMultilineBlocks: false,
+        noSingleLineBlocks: true,
+        noZeroLineText: true,
+        singleLineTags: [
+          'lends',
+          'type',
+          'inheritdoc',
+          'override',
+        ],
+      },
+    ],
+    'jsdoc/no-bad-blocks': [
+      'error',
+      {
+        ignore: [
+          'ts-check',
+          'ts-expect-error',
+          'ts-ignore',
+          'ts-nocheck',
+        ],
+        preventAllMultiAsteriskBlocks: false,
+      },
+    ],
+    'jsdoc/no-blank-block-descriptions': [
+      'error',
+    ],
+    'jsdoc/no-blank-blocks': [
+      'error',
+      {
+        enableFixer: false,
+      },
+    ],
+    'jsdoc/no-defaults': [
+      'error',
+      {
+        noOptionalParamNames: false,
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/no-missing-syntax': [
+      'error',
+      {
+        contexts: [],
+      },
+    ],
+    'jsdoc/no-multi-asterisks': [
+      'error',
+      {
+        allowWhitespace: false,
+        preventAtEnd: true,
+        preventAtMiddleLines: true,
+      },
+    ],
+    'jsdoc/no-restricted-syntax': [
+      'error',
+      {
+        contexts: [],
+      },
+    ],
+    'jsdoc/no-types': [
+      'error',
+      {
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/no-undefined-types': [
+      'error',
+      {
+        definedTypes: [],
+        disableReporting: false,
+        markVariablesAsUsed: true,
+      },
+    ],
+    'jsdoc/require-asterisk-prefix': [
       'error',
       'always',
       {
-        ignoreInlineComments: false,
-        ignoreConsecutiveComments: false,
-        ignorePattern: '',
+        tags: {},
       },
     ],
-    'class-methods-use-this': [
+    'jsdoc/require-description': [
       'error',
       {
-        enforceForClassFields: true,
-        exceptMethods: [],
+        checkConstructors: true,
+        checkGetters: true,
+        checkSetters: true,
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+        descriptionStyle: 'body',
+        exemptedBy: [
+          'inheritdoc',
+        ],
       },
     ],
-    complexity: [
+    'jsdoc/require-description-complete-sentence': [
       'error',
       {
-        max: 20,
+        abbreviations: [],
+        newlineBeforeCapsAssumesBadSentenceEnd: false,
+        tags: [],
       },
     ],
-    'consistent-return': [
+    'jsdoc/require-example': [
       'error',
       {
-        treatUndefinedAsUnspecified: false,
+        checkConstructors: true,
+        checkGetters: false,
+        checkSetters: false,
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+        enableFixer: true,
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        exemptNoArguments: false,
       },
     ],
-    'consistent-this': [
-      'error',
-      'that',
-    ],
-    'constructor-super': [
-      'error',
-    ],
-    curly: [
-      'error',
-      'all',
-    ],
-    'default-case': [
-      'error',
-    ],
-    'default-case-last': [
-      'error',
-    ],
-    'default-param-last': [
-      'error',
-    ],
-    'dot-notation': [
+    'jsdoc/require-file-overview': [
       'error',
       {
-        allowKeywords: true,
-        allowPattern: '',
-      },
-    ],
-    eqeqeq: [
-      'error',
-      'always',
-    ],
-    'for-direction': [
-      'error',
-    ],
-    'func-name-matching': [
-      'error',
-      'always',
-    ],
-    'func-names': [
-      'error',
-      'always',
-    ],
-    'func-style': [
-      'error',
-      'expression',
-      {
-        allowArrowFunctions: false,
-      },
-    ],
-    'getter-return': [
-      'error',
-      {
-        allowImplicit: false,
-      },
-    ],
-    'grouped-accessor-pairs': [
-      'error',
-      'anyOrder',
-    ],
-    'guard-for-in': [
-      'error',
-    ],
-    'id-denylist': [
-      'error',
-    ],
-    'id-length': [
-      'error',
-      {
-        min: 2,
-        max: Infinity,
-        properties: 'always',
-        exceptions: [],
-        exceptionPatterns: [],
-      },
-    ],
-    'id-match': [
-      'error',
-      '^.+$',
-      {
-        properties: false,
-        classFields: false,
-        onlyDeclarations: false,
-        ignoreDestructuring: false,
-      },
-    ],
-    'init-declarations': [
-      'error',
-      'always',
-    ],
-    'jsx-quotes': [
-      'error',
-      'prefer-double',
-    ],
-    'logical-assignment-operators': [
-      'error',
-      'always',
-      {
-        enforceForIfStatements: false,
-      },
-    ],
-    'max-classes-per-file': [
-      'error',
-      {
-        max: 1,
-        ignoreExpressions: false,
-      },
-    ],
-    'max-depth': [
-      'error',
-      4,
-    ],
-    'max-lines': [
-      'error',
-      {
-        max: 300,
-        skipBlankLines: false,
-        skipComments: false,
-      },
-    ],
-    'max-lines-per-function': [
-      'error',
-      {
-        max: 50,
-        skipBlankLines: false,
-        skipComments: false,
-        IIFEs: false,
-      },
-    ],
-    'max-nested-callbacks': [
-      'error',
-      10,
-    ],
-    'max-params': [
-      'error',
-      3,
-    ],
-    'max-statements': [
-      'error',
-      10,
-    ],
-    'new-cap': [
-      'error',
-      {
-        newIsCap: true,
-        capIsNew: true,
-        newIsCapExceptions: [],
-        capIsNewExceptions: [],
-        properties: true,
-      },
-    ],
-    'no-alert': [
-      'error',
-    ],
-    'no-array-constructor': [
-      'error',
-    ],
-    'no-async-promise-executor': [
-      'error',
-    ],
-    'no-await-in-loop': [
-      'error',
-    ],
-    'no-bitwise': [
-      'error',
-      {
-        allow: [],
-        int32Hint: false,
-      },
-    ],
-    'no-caller': [
-      'error',
-    ],
-    'no-case-declarations': [
-      'error',
-    ],
-    'no-class-assign': [
-      'error',
-    ],
-    'no-compare-neg-zero': [
-      'error',
-    ],
-    'no-cond-assign': [
-      'error',
-      'except-parens',
-    ],
-    'no-console': [
-      'error',
-      {
-        allow: [],
-      },
-    ],
-    'no-const-assign': [
-      'error',
-    ],
-    'no-constant-binary-expression': [
-      'error',
-    ],
-    'no-constant-condition': [
-      'error',
-      {
-        checkLoops: true,
-      },
-    ],
-    'no-constructor-return': [
-      'error',
-    ],
-    'no-continue': [
-      'error',
-    ],
-    'no-control-regex': [
-      'error',
-    ],
-    'no-debugger': [
-      'error',
-    ],
-    'no-delete-var': [
-      'error',
-    ],
-    'no-div-regex': [
-      'error',
-    ],
-    'no-dupe-args': [
-      'error',
-    ],
-    'no-dupe-class-members': [
-      'error',
-    ],
-    'no-dupe-else-if': [
-      'error',
-    ],
-    'no-dupe-keys': [
-      'error',
-    ],
-    'no-duplicate-case': [
-      'error',
-    ],
-    'no-duplicate-imports': [
-      'error',
-      {
-        includeExports: false,
-      },
-    ],
-    'no-else-return': [
-      'error',
-      {
-        allowElseIf: true,
-      },
-    ],
-    'no-empty': [
-      'error',
-      {
-        allowEmptyCatch: false,
-      },
-    ],
-    'no-empty-character-class': [
-      'error',
-    ],
-    'no-empty-function': [
-      'error',
-      {
-        allow: [],
-      },
-    ],
-    'no-empty-pattern': [
-      'error',
-    ],
-    'no-eq-null': [
-      'error',
-    ],
-    'no-eval': [
-      'error',
-    ],
-    'no-ex-assign': [
-      'error',
-    ],
-    'no-extend-native': [
-      'error',
-    ],
-    'no-extra-bind': [
-      'error',
-    ],
-    'no-extra-boolean-cast': [
-      'error',
-      {
-        enforceForLogicalOperands: false,
-      },
-    ],
-    'no-extra-label': [
-      'error',
-    ],
-    'no-fallthrough': [
-      'error',
-      {
-        allowEmptyCase: true,
-        commentPattern: '',
-      },
-    ],
-    'no-func-assign': [
-      'error',
-    ],
-    'no-global-assign': [
-      'error',
-      {
-        exceptions: [],
-      },
-    ],
-    'no-implicit-coercion': [
-      'error',
-      {
-        boolean: true,
-        number: true,
-        string: true,
-        disallowTemplateShorthand: false,
-        allow: [],
-      },
-    ],
-    'no-implicit-globals': [
-      'error',
-      {
-        lexicalBindings: false,
-      },
-    ],
-    'no-implied-eval': [
-      'error',
-    ],
-    'no-import-assign': [
-      'error',
-    ],
-    'no-inline-comments': [
-      'error',
-      {
-        ignorePattern: '',
-      },
-    ],
-    'no-inner-declarations': [
-      'error',
-      'functions',
-    ],
-    'no-invalid-regexp': [
-      'error',
-      {
-        allowConstructorFlags: [],
-      },
-    ],
-    'no-invalid-this': [
-      'error',
-      {
-        capIsConstructor: true,
-      },
-    ],
-    'no-irregular-whitespace': [
-      'error',
-      {
-        skipComments: false,
-        skipJSXText: false,
-        skipRegExps: false,
-        skipStrings: true,
-        skipTemplates: false,
-      },
-    ],
-    'no-iterator': [
-      'error',
-    ],
-    'no-label-var': [
-      'error',
-    ],
-    'no-labels': [
-      'error',
-      {
-        allowLoop: false,
-        allowSwitch: false,
-      },
-    ],
-    'no-lone-blocks': [
-      'error',
-    ],
-    'no-lonely-if': [
-      'error',
-    ],
-    'no-loop-func': [
-      'error',
-    ],
-    'no-loss-of-precision': [
-      'error',
-    ],
-    'no-magic-numbers': [
-      'error',
-      {
-        detectObjects: false,
-        enforceConst: false,
-        ignore: [],
-        ignoreArrayIndexes: false,
-        ignoreDefaultValues: false,
-      },
-    ],
-    'no-misleading-character-class': [
-      'error',
-    ],
-    'no-multi-assign': [
-      'error',
-      {
-        ignoreNonDeclaration: false,
-      },
-    ],
-    'no-multi-str': [
-      'error',
-    ],
-    'no-negated-condition': [
-      'error',
-    ],
-    'no-nested-ternary': [
-      'error',
-    ],
-    'no-new': [
-      'error',
-    ],
-    'no-new-func': [
-      'error',
-    ],
-    'no-new-object': [
-      'error',
-    ],
-    'no-new-symbol': [
-      'error',
-    ],
-    'no-new-wrappers': [
-      'error',
-    ],
-    'no-nonoctal-decimal-escape': [
-      'error',
-    ],
-    'no-obj-calls': [
-      'error',
-    ],
-    'no-octal': [
-      'error',
-    ],
-    'no-octal-escape': [
-      'error',
-    ],
-    'no-param-reassign': [
-      'error',
-      {
-        props: false,
-        ignorePropertyModificationsFor: [],
-        ignorePropertyModificationsForRegex: [],
-      },
-    ],
-    'no-plusplus': [
-      'error',
-      {
-        allowForLoopAfterthoughts: false,
-      },
-    ],
-    'no-promise-executor-return': [
-      'error',
-    ],
-    'no-proto': [
-      'error',
-    ],
-    'no-prototype-builtins': [
-      'error',
-    ],
-    'no-redeclare': [
-      'error',
-      {
-        builtinGlobals: true,
-      },
-    ],
-    'no-regex-spaces': [
-      'error',
-    ],
-    'no-restricted-exports': [
-      'error',
-      {
-        restrictedNamedExports: [],
-        restrictedNamedExportsPattern: '',
-        restrictDefaultExports: {
-          direct: false,
-          named: false,
-          defaultFrom: false,
-          namedFrom: false,
-          namespaceFrom: false,
+        tags: {
+          file: {
+            initialCommentsOnly: true,
+            mustExist: true,
+            preventDuplicates: true,
+          },
         },
       },
     ],
-    'no-restricted-globals': [
-      'error',
-      // There are 0 or more rest parameters in the array
-      // string | { name: string, message: string }
-    ],
-    'no-restricted-imports': [
-      'error',
-      // There are 0 or more rest parameters in the array
-      // string | { name: string, message: string }
-    ],
-    'no-restricted-properties': [
-      'error',
-      // There are 0 or more rest parameters in the array
-      // { object?: string, property: string, message?: string }
-    ],
-    'no-restricted-syntax': [
-      'error',
-      // There are 0 or more rest parameters in the array
-      // string | { selector: string, message: string }
-    ],
-    'no-return-assign': [
-      'error',
-      'except-parens',
-    ],
-    'no-return-await': [
-      'error',
-    ],
-    'no-script-url': [
-      'error',
-    ],
-    'no-self-assign': [
-      'error',
-      {
-        props: true,
-      },
-    ],
-    'no-self-compare': [
-      'error',
-    ],
-    'no-sequences': [
-      'error',
-      {
-        allowInParentheses: true,
-      },
-    ],
-    'no-setter-return': [
-      'error',
-    ],
-    'no-shadow': [
-      'error',
-      {
-        builtinGlobals: false,
-        hoist: 'functions',
-        ignoreOnInitialization: false,
-        allow: [],
-      },
-    ],
-    'no-shadow-restricted-names': [
-      'error',
-    ],
-    'no-sparse-arrays': [
-      'error',
-    ],
-    'no-template-curly-in-string': [
-      'error',
-    ],
-    'no-ternary': [
-      'error',
-    ],
-    'no-this-before-super': [
-      'error',
-    ],
-    'no-throw-literal': [
-      'error',
-    ],
-    'no-undef': [
-      'error',
-      {
-        typeof: false,
-      },
-    ],
-    'no-undef-init': [
-      'error',
-    ],
-    'no-undefined': [
-      'error',
-    ],
-    'no-underscore-dangle': [
-      'error',
-      {
-        allow: [],
-        allowAfterThis: false,
-        allowAfterSuper: false,
-        allowAfterThisConstructor: false,
-        enforceInMethodNames: false,
-        enforceInClassFields: false,
-        allowFunctionParams: true,
-        allowInArrayDestructuring: true,
-        allowInObjectDestructuring: true,
-      },
-    ],
-    'no-unexpected-multiline': [
-      'error',
-    ],
-    'no-unmodified-loop-condition': [
-      'error',
-    ],
-    'no-unneeded-ternary': [
-      'error',
-      {
-        defaultAssignment: true,
-      },
-    ],
-    'no-unreachable': [
-      'error',
-    ],
-    'no-unreachable-loop': [
-      'error',
-    ],
-    'no-unsafe-finally': [
-      'error',
-    ],
-    'no-unsafe-negation': [
-      'error',
-      {
-        enforceForOrderingRelations: false,
-      },
-    ],
-    'no-unsafe-optional-chaining': [
-      'error',
-      {
-        disallowArithmeticOperators: false,
-      },
-    ],
-    'no-unused-expressions': [
-      'error',
-      {
-        allowShortCircuit: false,
-        allowTernary: false,
-        allowTaggedTemplates: false,
-        enforceForJSX: false,
-      },
-    ],
-    'no-unused-labels': [
-      'error',
-    ],
-    'no-unused-private-class-members': [
-      'error',
-    ],
-    'no-unused-vars': [
-      'error',
-      {
-        vars: 'all',
-        varsIgnorePattern: '',
-        args: 'after-used',
-        argsIgnorePattern: '',
-        caughtErrors: 'none',
-        caughtErrorsIgnorePattern: '',
-        ignoreRestSiblings: false,
-        destructuredArrayIgnorePattern: '',
-      },
-    ],
-    'no-use-before-define': [
-      'error',
-      {
-        functions: true,
-        classes: true,
-        variables: true,
-        allowNamedExports: false,
-      },
-    ],
-    'no-useless-backreference': [
-      'error',
-    ],
-    'no-useless-call': [
-      'error',
-    ],
-    'no-useless-catch': [
-      'error',
-    ],
-    'no-useless-computed-key': [
-      'error',
-      {
-        enforceForClassMembers: false,
-      },
-    ],
-    'no-useless-concat': [
-      'error',
-    ],
-    'no-useless-constructor': [
-      'error',
-    ],
-    'no-useless-escape': [
-      'error',
-    ],
-    'no-useless-rename': [
-      'error',
-      {
-        ignoreDestructuring: false,
-        ignoreImport: false,
-        ignoreExport: false,
-      },
-    ],
-    'no-useless-return': [
-      'error',
-    ],
-    'no-var': [
-      'error',
-    ],
-    'no-void': [
-      'error',
-      {
-        allowAsStatement: false,
-      },
-    ],
-    'no-with': [
-      'error',
-    ],
-    'one-var': [
+    'jsdoc/require-hyphen-before-param-description': [
       'error',
       'always',
+      {
+        tags: {},
+      },
     ],
-    'no-warning-comments': [
+    'jsdoc/require-jsdoc': [
       'error',
       {
-        terms: [
-          'todo',
-          'fixme',
-          'xxx',
+        checkConstructors: true,
+        checkGetters: true,
+        checkSetters: true,
+        contexts: [
+          'ArrowFunctionExpression',
+          'ClassDeclaration',
+          'ClassExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+          'MethodDefinition',
         ],
-        location: 'start',
-        decoration: [],
+        enableFixer: true,
+        exemptEmptyConstructors: true,
+        exemptEmptyFunctions: false,
+        fixerMessage: '',
+        minLineCount: 'undefined',
+        publicOnly: false,
+        require: {
+          ArrowFunctionExpression: false,
+          ClassDeclaration: false,
+          ClassExpression: false,
+          FunctionDeclaration: true,
+          FunctionExpression: false,
+          MethodDefinition: false,
+        },
       },
     ],
-    'object-shorthand': [
-      'error',
-      'always',
-      {
-        avoidQuotes: false,
-        ignoreConstructors: false,
-        avoidExplicitReturnArrows: false,
-        methodsIgnorePattern: '',
-      },
-    ],
-    'operator-assignment': [
-      'error',
-      'always',
-    ],
-    'prefer-arrow-callback': [
+    'jsdoc/require-param': [
       'error',
       {
-        allowNamedFunctions: false,
-        allowUnboundThis: true,
-      },
-    ],
-    'prefer-const': [
-      'error',
-      {
-        destructuring: 'any',
-        ignoreReadBeforeAssign: false,
-      },
-    ],
-    'prefer-destructuring': [
-      'error',
-      {
-        array: true,
-        object: true,
-      },
-      {
-        enforceForRenamedProperties: false,
-      },
-    ],
-    'prefer-exponentiation-operator': [
-      'error',
-    ],
-    'prefer-named-capture-group': [
-      'error',
-    ],
-    'prefer-numeric-literals': [
-      'error',
-    ],
-    'prefer-object-has-own': [
-      'error',
-    ],
-    'prefer-object-spread': [
-      'error',
-    ],
-    'prefer-promise-reject-errors': [
-      'error',
-      {
-        allowEmptyReject: false,
-      },
-    ],
-    'prefer-regex-literals': [
-      'error',
-      {
-        disallowRedundantWrapping: false,
-      },
-    ],
-    'prefer-rest-params': [
-      'error',
-    ],
-    'prefer-spread': [
-      'error',
-    ],
-    'prefer-template': [
-      'error',
-    ],
-    radix: [
-      'error',
-      'always',
-    ],
-    'require-atomic-updates': [
-      'error',
-      {
-        allowProperties: false,
-      },
-    ],
-    'require-await': [
-      'error',
-    ],
-    'require-unicode-regexp': [
-      'error',
-    ],
-    'require-yield': [
-      'error',
-    ],
-    'sort-imports': [
-      'error',
-      {
-        ignoreCase: false,
-        ignoreDeclarationSort: false,
-        ignoreMemberSort: false,
-        memberSyntaxSortOrder: [
-          'none',
-          'all',
-          'multiple',
-          'single',
+        autoIncrementBase: 0,
+        checkRestProperty: false,
+        checkDestructured: true,
+        checkDestructuredRoots: true,
+        checkTypesPattern: '/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/',
+        enableFixer: true,
+        enableRootFixer: true,
+        enableRestElementFixer: true,
+        unnamedRootBase: [
+          'root',
         ],
-        allowSeparatedGroups: false,
+        useDefaultObjectProperties: false,
       },
     ],
-    'sort-keys': [
-      'error',
-      'asc',
-      {
-        caseSensitive: true,
-        minKeys: 2,
-        natural: false,
-        allowLineSeparatedGroups: false,
-      },
-    ],
-    'sort-vars': [
+    'jsdoc/require-param-description': [
       'error',
       {
-        ignoreCase: false,
+        defaultDestructuredRootDescription: 'The root object',
+        setDefaultDestructuredRootDescription: false,
       },
     ],
-    strict: [
+    'jsdoc/require-param-name': [
       'error',
-      'safe',
+      {
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
     ],
-    'symbol-description': [
+    'jsdoc/require-param-type': [
+      'error',
+      {
+        defaultDestructuredRootType: 'object',
+        setDefaultDestructuredRootType: false,
+      },
+    ],
+    'jsdoc/require-property': [
       'error',
     ],
-    'unicode-bom': [
+    'jsdoc/require-property-description': [
+      'error',
+    ],
+    'jsdoc/require-property-name': [
+      'error',
+    ],
+    'jsdoc/require-property-type': [
+      'error',
+    ],
+    'jsdoc/require-returns': [
+      'error',
+      {
+        checkConstructors: false,
+        checkGetters: true,
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        forceRequireReturn: false,
+        forceReturnsWithAsync: false,
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/require-returns-check': [
+      'error',
+      {
+        exemptAsync: true,
+        exemptGenerators: false,
+        reportMissingReturnForUndefinedTypes: false,
+      },
+    ],
+    'jsdoc/require-returns-description': [
+      'error',
+      {
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/require-returns-type': [
+      'error',
+      {
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/require-throws': [
+      'error',
+      {
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        contexts: [
+          'ArrowFunctionExpression',
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+      },
+    ],
+    'jsdoc/require-yields': [
+      'error',
+      {
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        forceRequireYields: false,
+        contexts: [
+          'FunctionDeclaration',
+          'FunctionExpression',
+        ],
+        withGeneratorTag: true,
+        next: false,
+        forceRequireNext: false,
+        nextWithGeneratorTag: false,
+      },
+    ],
+    'jsdoc/require-yields-check': [
+      'error',
+      {
+        checkGeneratorsOnly: false,
+        next: false,
+      },
+    ],
+    'jsdoc/sort-tags': [
+      'error',
+      {
+        alphabetizeExtras: false,
+        linesBetween: 1,
+        reportIntraTagGroupSpacing: true,
+        reportTagGroupSpacing: true,
+        // See https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/defaultTagOrder.js
+        tagSequence: [
+          {
+            tags: [
+              // Brief descriptions
+              'summary',
+              'typeSummary',
+
+              // Module/file-level
+              'module',
+              'exports',
+              'file',
+              'fileoverview',
+              'overview',
+              'import',
+
+              // Identifying (name, type)
+              'typedef',
+              'interface',
+              'record',
+              'template',
+              'name',
+              'kind',
+              'type',
+              'alias',
+              'external',
+              'host',
+              'callback',
+              'func',
+              'function',
+              'method',
+              'class',
+              'constructor',
+
+              // Relationships
+              'modifies',
+              'mixes',
+              'mixin',
+              'mixinClass',
+              'mixinFunction',
+              'namespace',
+              'borrows',
+              'constructs',
+              'lends',
+              'implements',
+              'requires',
+
+              // Long descriptions
+              'desc',
+              'description',
+              'classdesc',
+              'tutorial',
+              'copyright',
+              'license',
+
+              // Simple annotations
+
+              // TypeScript
+              'internal',
+              'overload',
+
+              'const',
+              'constant',
+              'final',
+              'global',
+              'readonly',
+              'abstract',
+              'virtual',
+              'var',
+              'member',
+              'memberof',
+              'memberof!',
+              'inner',
+              'instance',
+              'inheritdoc',
+              'inheritDoc',
+              'override',
+              'hideconstructor',
+
+              // Core function/object info
+              'param',
+              'arg',
+              'argument',
+              'prop',
+              'property',
+              'return',
+              'returns',
+
+              // Important behavior details
+              'async',
+              'generator',
+              'default',
+              'defaultvalue',
+              'enum',
+              'augments',
+              'extends',
+              'throws',
+              'exception',
+              'yield',
+              'yields',
+              'event',
+              'fires',
+              'emits',
+              'listens',
+              'this',
+
+              // TypeScript
+              'satisfies',
+
+              // Access
+              'static',
+              'private',
+              'protected',
+              'public',
+              'access',
+              'package',
+
+              '-other',
+
+              // Supplementary descriptions
+              'see',
+              'example',
+
+              // METADATA
+
+              // Other Closure (undocumented) metadata
+              'closurePrimitive',
+              'customElement',
+              'expose',
+              'hidden',
+              'idGenerator',
+              'meaning',
+              'ngInject',
+              'owner',
+              'wizaction',
+
+              // Other Closure (documented) metadata
+              'define',
+              'dict',
+              'export',
+              'externs',
+              'implicitCast',
+              'noalias',
+              'nocollapse',
+              'nocompile',
+              'noinline',
+              'nosideeffects',
+              'polymer',
+              'polymerBehavior',
+              'preserve',
+              'struct',
+              'suppress',
+              'unrestricted',
+
+              // @homer0/prettier-plugin-jsdoc metadata
+              'category',
+
+              // Non-Closure metadata
+              'ignore',
+              'author',
+              'version',
+              'variation',
+              'since',
+              'deprecated',
+              'todo',
+            ],
+          },
+        ],
+      },
+    ],
+    'jsdoc/tag-lines': [
       'error',
       'never',
-    ],
-    'use-isnan': [
-      'error',
       {
-        enforceForSwitchCase: true,
-        enforceForIndexOf: false,
+        count: 1,
+        startLines: 0,
+        endLines: 0,
+        applyToEndTag: true,
+        tags: {},
       },
     ],
-    'valid-typeof': [
+    'jsdoc/text-escaping': [
       'error',
+      // Must include either `escapeHTML` or `escapeMarkdown` (or both).
       {
-        requireStringLiterals: false,
+        escapeHTML: false,
+        escapeMarkdown: false,
       },
     ],
-    'vars-on-top': [
+    'jsdoc/valid-types': [
       'error',
-    ],
-    yoda: [
-      'error',
-      'never',
+      {
+        allowEmptyNamepaths: true,
+      },
     ],
   },
 }
