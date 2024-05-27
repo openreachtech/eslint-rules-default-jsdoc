@@ -1,7 +1,7 @@
 {
-  "name": "@openreachtech/eslint-rules-default",
+  "name": "@openreachtech/eslint-rules-default-jsdoc",
   "version": "1.0.0",
-  "description": "A showcasing package all the rules of ESLint.",
+  "description": "A showcasing package all the JSDoc plugin rules of ESLint.",
   "main": "index.js",
   "exports": {
     ".": {
