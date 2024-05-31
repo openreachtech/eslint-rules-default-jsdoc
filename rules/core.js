@@ -337,7 +337,7 @@ module.exports = {
         exemptEmptyConstructors: true,
         exemptEmptyFunctions: false,
         fixerMessage: '',
-        minLineCount: 'undefined',
+        minLineCount: undefined,
         publicOnly: false,
         require: {
           ArrowFunctionExpression: false,
