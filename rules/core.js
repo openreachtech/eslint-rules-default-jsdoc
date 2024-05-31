@@ -170,7 +170,7 @@ module.exports = {
         ],
         noFinalLineText: true,
         noMultilineBlocks: false,
-        noSingleLineBlocks: true,
+        noSingleLineBlocks: false,
         noZeroLineText: true,
         singleLineTags: [
           'lends',
