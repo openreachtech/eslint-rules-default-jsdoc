@@ -175,8 +175,6 @@ module.exports = {
         singleLineTags: [
           'lends',
           'type',
-          'inheritdoc',
-          'override',
         ],
       },
     ],
