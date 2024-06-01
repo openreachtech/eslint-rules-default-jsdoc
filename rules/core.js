@@ -170,13 +170,11 @@ module.exports = {
         ],
         noFinalLineText: true,
         noMultilineBlocks: false,
-        noSingleLineBlocks: true,
+        noSingleLineBlocks: false,
         noZeroLineText: true,
         singleLineTags: [
           'lends',
           'type',
-          'inheritdoc',
-          'override',
         ],
       },
     ],
@@ -337,7 +335,7 @@ module.exports = {
         exemptEmptyConstructors: true,
         exemptEmptyFunctions: false,
         fixerMessage: '',
-        minLineCount: 'undefined',
+        minLineCount: undefined,
         publicOnly: false,
         require: {
           ArrowFunctionExpression: false,
