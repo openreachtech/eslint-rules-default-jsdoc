@@ -135,4 +135,4 @@ We strive to meet user expectations and your contributions are highly appreciate
 
 ## Authors
 
-* [Open Reach Tech inc.](https://openreach.tech)
+* [Open Reach Tech Inc.](https://openreach.tech)
