@@ -263,6 +263,9 @@ export default {
         markVariablesAsUsed: true,
       },
     ],
+    'jsdoc/reject-any-type': [
+      'error',
+    ],
     'jsdoc/require-asterisk-prefix': [
       'error',
       'always',
