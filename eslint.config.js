@@ -1,10 +1,8 @@
-'use strict'
+import jsRules from '@eslint/js'
+import jestPlugin from 'eslint-plugin-jest'
+import openreachtechPlugin from 'eslint-plugin-openreachtech'
 
-const jsRules = require('@eslint/js')
-const jestPlugin = require('eslint-plugin-jest')
-const openreachtechPlugin = require('eslint-plugin-openreachtech')
-
-const jsdocPlugin = require('./index')
+import jsdocPlugin from './index.js'
 
 const jestFlatConfigRecommended = jestPlugin.configs['flat/recommended']
 
@@ -13,7 +11,7 @@ const jestFlatConfigRecommended = jestPlugin.configs['flat/recommended']
  *
  * @type {Array<import('eslint').Linter.FlatConfig>}
  */
-module.exports = [
+export default [
   {
     languageOptions: {
       globals: {
@@ -22,7 +20,7 @@ module.exports = [
       parserOptions: {
         ecmaVersion: 'latest',
       },
-      sourceType: 'commonjs',
+      sourceType: 'module',
     },
   },
 
