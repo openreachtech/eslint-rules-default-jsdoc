@@ -9,7 +9,7 @@ const jestFlatConfigRecommended = jestPlugin.configs['flat/recommended']
 /**
  * ESLint Config
  *
- * @type {Array<import('eslint').Linter.FlatConfig>}
+ * @type {Array<import('eslint').Linter.Config<*>>}
  */
 export default [
   {
