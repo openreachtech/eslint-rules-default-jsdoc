@@ -332,6 +332,7 @@ export default {
     'jsdoc/require-jsdoc': [
       'error',
       {
+        checkAllFunctionExpressions: false,
         checkConstructors: true,
         checkGetters: true,
         checkSetters: true,
@@ -346,6 +347,7 @@ export default {
         enableFixer: true,
         exemptEmptyConstructors: true,
         exemptEmptyFunctions: false,
+        exemptOverloadedImplementations: false,
         fixerMessage: '',
         minLineCount: undefined,
         publicOnly: false,
@@ -357,6 +359,7 @@ export default {
           FunctionExpression: false,
           MethodDefinition: false,
         },
+        skipInterveningOverloadedDeclarations: true,
       },
     ],
     'jsdoc/require-param': [
