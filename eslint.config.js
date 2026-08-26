@@ -2206,6 +2206,44 @@ export default [
           escapeMarkdown: false,
         },
       ],
+      'jsdoc/type-formatting': [
+        /*
+         * Types are written with Array<xxxx> instead of xxxx[] here.
+         */
+        'error',
+        {
+          arrayBrackets: 'angle', // 'square'
+          arrowFunctionPostReturnMarkerSpacing: ' ',
+          arrowFunctionPreReturnMarkerSpacing: ' ',
+          enableFixer: true,
+          functionOrClassParameterSpacing: ' ',
+          functionOrClassPostGenericSpacing: '',
+          functionOrClassPostReturnMarkerSpacing: ' ',
+          functionOrClassPreReturnMarkerSpacing: '',
+          functionOrClassTypeParameterSpacing: ' ',
+          genericAndTupleElementSpacing: ' ',
+          genericDot: false,
+          keyValuePostColonSpacing: ' ',
+          keyValuePostKeySpacing: '',
+          keyValuePostOptionalSpacing: '',
+          keyValuePostVariadicSpacing: '',
+          methodQuotes: 'double',
+          objectFieldIndent: '',
+          objectFieldQuote: null,
+          objectFieldSeparator: 'comma',
+          objectFieldSeparatorOptionalLinebreak: true,
+          objectFieldSeparatorTrailingPunctuation: false,
+          objectTypeBracketSpacing: '',
+          parameterDefaultValueSpacing: ' ',
+          postMethodNameSpacing: '',
+          postNewSpacing: ' ',
+          separatorForSingleObjectField: false,
+          stringQuotes: 'double',
+          trailingPunctuationMultilineOnly: false,
+          typeBracketSpacing: '',
+          unionSpacing: ' ',
+        },
+      ],
       'jsdoc/valid-types': [
         'error',
         {
