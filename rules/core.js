@@ -306,6 +306,14 @@ export default {
         markVariablesAsUsed: true,
       },
     ],
+    'jsdoc/normalize-see-links': [
+      'error',
+      {
+        canonicalForm: 'pipe',
+        enableFixer: true,
+        wrapBareUrls: false,
+      },
+    ],
     'jsdoc/reject-any-type': [
       'error',
     ],
