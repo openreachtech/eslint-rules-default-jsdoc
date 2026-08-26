@@ -491,6 +491,15 @@ export default {
     'jsdoc/require-property-type': [
       'error',
     ],
+    'jsdoc/require-rejects': [
+      'error',
+      {
+        contexts: [],
+        exemptedBy: [
+          'inheritdoc',
+        ],
+      },
+    ],
     'jsdoc/require-returns': [
       'error',
       {
