@@ -373,6 +373,8 @@ export default {
         enableFixer: true,
         enableRootFixer: true,
         enableRestElementFixer: true,
+        ignoreWhenAllParamsMissing: false,
+        interfaceExemptsParamsCheck: false,
         unnamedRootBase: [
           'root',
         ],
