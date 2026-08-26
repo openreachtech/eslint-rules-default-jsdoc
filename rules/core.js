@@ -145,6 +145,14 @@ export default {
         tags: [],
       },
     ],
+    'jsdoc/escape-inline-tags': [
+      'error',
+      {
+        allowedInlineTags: [],
+        enableFixer: false,
+        fixType: 'backslash',
+      },
+    ],
     'jsdoc/implements-on-classes': [
       'error',
       {
