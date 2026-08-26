@@ -478,6 +478,9 @@ export default {
         ],
       },
     ],
+    'jsdoc/require-template-description': [
+      'error',
+    ],
     'jsdoc/require-throws': [
       'error',
       {
