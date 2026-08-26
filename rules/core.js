@@ -10,6 +10,9 @@ export default {
     ],
     'jsdoc/check-alignment': [
       'error',
+      {
+        innerIndent: 1,
+      },
     ],
     'jsdoc/check-indentation': [
       'error',
