@@ -27,7 +27,7 @@
   "keywords": [
     "ESLint"
   ],
-  "author": "Open Reach Tech inc.",
+  "author": "Open Reach Tech Inc.",
   "license": "Apache-2.0",
   "dependencies": {
     "eslint-plugin-jsdoc": "^48.2.6"
