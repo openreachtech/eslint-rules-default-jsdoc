@@ -17,6 +17,7 @@ export default {
     'jsdoc/check-indentation': [
       'error',
       {
+        allowIndentedSections: false,
         excludeTags: [
           'example',
           'param',
