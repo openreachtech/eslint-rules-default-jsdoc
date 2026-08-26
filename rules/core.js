@@ -816,6 +816,13 @@ export default {
         escapeMarkdown: false,
       },
     ],
+    'jsdoc/ts-method-signature-style': [
+      'error',
+      'property',
+      {
+        enableFixer: true,
+      },
+    ],
     'jsdoc/ts-no-empty-object-type': [
       'error',
     ],
