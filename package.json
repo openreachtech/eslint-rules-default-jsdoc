@@ -1,6 +1,6 @@
 {
   "name": "@openreachtech/eslint-rules-default-jsdoc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A showcasing package all the JSDoc plugin rules of ESLint.",
   "main": "index.js",
   "exports": {
@@ -28,7 +28,7 @@
     "ESLint"
   ],
   "author": "Open Reach Tech inc.",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "eslint-plugin-jsdoc": "^48.2.6"
   },
