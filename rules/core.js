@@ -178,6 +178,11 @@ export default {
         noMultilineBlocks: false,
         noSingleLineBlocks: false,
         noZeroLineText: true,
+        // requireSingleLineUnderCount: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         singleLineTags: [
           'lends',
           'type',
