@@ -266,6 +266,9 @@ export default {
     'jsdoc/reject-any-type': [
       'error',
     ],
+    'jsdoc/reject-function-type': [
+      'error',
+    ],
     'jsdoc/require-asterisk-prefix': [
       'error',
       'always',
