@@ -371,6 +371,9 @@ export default {
         skipInterveningOverloadedDeclarations: true,
       },
     ],
+    'jsdoc/require-next-description': [
+      'error',
+    ],
     'jsdoc/require-param': [
       'error',
       {
