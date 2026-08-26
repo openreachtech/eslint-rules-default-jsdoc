@@ -96,6 +96,9 @@ export default {
         typed: false,
       },
     ],
+    'jsdoc/check-template-names': [
+      'error',
+    ],
     'jsdoc/check-types': [
       'error',
       {
