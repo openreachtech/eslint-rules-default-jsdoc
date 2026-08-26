@@ -116,6 +116,29 @@ export default {
         licensePattern: '/([^\\\\n\\\\r]*)/gu',
       },
     ],
+    'jsdoc/convert-to-jsdoc-comments': [
+      'error',
+      {
+        allowedPrefixes: [
+          '@ts-',
+          'istanbul ',
+          'c8 ',
+          'v8 ',
+          'eslint',
+          'prettier-',
+        ],
+        contexts: [],
+        contextsAfter: [],
+        contextsBeforeAndAfter: [
+          'VariableDeclarator',
+          'TSPropertySignature',
+          'PropertyDefinition',
+        ],
+        enableFixer: true,
+        enforceJsdocLineStyle: 'multi',
+        lineOrBlockStyle: 'both',
+      },
+    ],
     'jsdoc/empty-tags': [
       'error',
       {
