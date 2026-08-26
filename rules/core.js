@@ -546,6 +546,12 @@ export default {
         ],
       },
     ],
+    'jsdoc/require-tags': [
+      'error',
+      {
+        tags: [],
+      },
+    ],
     'jsdoc/require-template-description': [
       'error',
     ],
