@@ -826,6 +826,12 @@ export default {
     'jsdoc/ts-no-empty-object-type': [
       'error',
     ],
+    'jsdoc/ts-no-unnecessary-template-expression': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
     'jsdoc/valid-types': [
       'error',
       {
