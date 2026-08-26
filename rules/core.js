@@ -10,10 +10,14 @@ export default {
     ],
     'jsdoc/check-alignment': [
       'error',
+      {
+        innerIndent: 1,
+      },
     ],
     'jsdoc/check-indentation': [
       'error',
       {
+        allowIndentedSections: false,
         excludeTags: [
           'example',
           'param',
@@ -37,23 +41,13 @@ export default {
           'returns',
           'return',
         ],
-        customSpacings: [
-          {
-            postDelimiter: 1,
-          },
-          {
-            postTag: 1,
-          },
-          {
-            postType: 1,
-          },
-          {
-            postName: 1,
-          },
-          {
-            postHyphen: 1,
-          },
-        ],
+        customSpacings: {
+          postDelimiter: 1,
+          postTag: 1,
+          postType: 1,
+          postName: 1,
+          postHyphen: 1,
+        },
         preserveMainDescriptionPostDelimiter: false,
         wrapIndent: '',
       },
@@ -62,10 +56,14 @@ export default {
       'error',
       {
         allowExtraTrailingParamDocs: false,
+        badParamNames: false,
+        badParamOrder: true,
         checkDestructured: true,
         checkRestProperty: false,
         checkTypesPattern: '/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/',
+        duplicateParams: true,
         enableFixer: false,
+        extraParams: false,
         disableExtraPropertyReporting: false,
         useDefaultObjectProperties: false,
       },
@@ -84,6 +82,16 @@ export default {
       {
         definedTags: [],
         enableFixer: true,
+        inlineTags: [
+          'link',
+          'linkcode',
+          'linkplain',
+          'tutorial',
+          'inheritDoc',
+          'label',
+          'include',
+          'includeCode',
+        ],
         jsxTags: false,
         typed: false,
       },
@@ -170,6 +178,11 @@ export default {
         noMultilineBlocks: false,
         noSingleLineBlocks: false,
         noZeroLineText: true,
+        // requireSingleLineUnderCount: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         singleLineTags: [
           'lends',
           'type',
@@ -241,6 +254,7 @@ export default {
     'jsdoc/no-undefined-types': [
       'error',
       {
+        checkUsedTypedefs: false,
         definedTypes: [],
         disableReporting: false,
         markVariablesAsUsed: true,
@@ -318,6 +332,7 @@ export default {
     'jsdoc/require-jsdoc': [
       'error',
       {
+        checkAllFunctionExpressions: false,
         checkConstructors: true,
         checkGetters: true,
         checkSetters: true,
@@ -332,6 +347,7 @@ export default {
         enableFixer: true,
         exemptEmptyConstructors: true,
         exemptEmptyFunctions: false,
+        exemptOverloadedImplementations: false,
         fixerMessage: '',
         minLineCount: undefined,
         publicOnly: false,
@@ -343,6 +359,7 @@ export default {
           FunctionExpression: false,
           MethodDefinition: false,
         },
+        skipInterveningOverloadedDeclarations: true,
       },
     ],
     'jsdoc/require-param': [
@@ -356,6 +373,8 @@ export default {
         enableFixer: true,
         enableRootFixer: true,
         enableRestElementFixer: true,
+        ignoreWhenAllParamsMissing: false,
+        interfaceExemptsParamsCheck: false,
         unnamedRootBase: [
           'root',
         ],
@@ -420,6 +439,7 @@ export default {
       {
         exemptAsync: true,
         exemptGenerators: false,
+        noNativeTypes: true,
         reportMissingReturnForUndefinedTypes: false,
       },
     ],
@@ -487,6 +507,7 @@ export default {
         linesBetween: 1,
         reportIntraTagGroupSpacing: true,
         reportTagGroupSpacing: true,
+        tagExceptions: {},
         // See https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/defaultTagOrder.js
         tagSequence: [
           {
@@ -662,7 +683,13 @@ export default {
       'never',
       {
         count: 1,
+        maxBlockLines: null,
         startLines: 0,
+        // startLinesWithNoTags: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         endLines: 0,
         applyToEndTag: true,
         tags: {},
