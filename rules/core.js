@@ -314,6 +314,14 @@ export default {
         wrapBareUrls: false,
       },
     ],
+    'jsdoc/prefer-import-tag': [
+      'error',
+      {
+        enableFixer: true,
+        exemptTypedefs: true,
+        outputType: 'namespaced-import',
+      },
+    ],
     'jsdoc/reject-any-type': [
       'error',
     ],
