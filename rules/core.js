@@ -78,6 +78,16 @@ export default {
       {
         definedTags: [],
         enableFixer: true,
+        inlineTags: [
+          'link',
+          'linkcode',
+          'linkplain',
+          'tutorial',
+          'inheritDoc',
+          'label',
+          'include',
+          'includeCode',
+        ],
         jsxTags: false,
         typed: false,
       },
