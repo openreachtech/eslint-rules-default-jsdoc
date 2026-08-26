@@ -1,3 +1,7 @@
+/**
+ * @import { Linter } from "eslint"
+ */
+
 import jsRules from '@eslint/js'
 import jestPlugin from 'eslint-plugin-jest'
 import openreachtechPlugin from 'eslint-plugin-openreachtech'
@@ -9,7 +13,7 @@ const jestFlatConfigRecommended = jestPlugin.configs['flat/recommended']
 /**
  * ESLint Config
  *
- * @type {Array<import('eslint').Linter.Config<*>>}
+ * @type {Array<Linter.Config>}
  */
 export default [
   {
