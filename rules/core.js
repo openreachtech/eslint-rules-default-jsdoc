@@ -184,6 +184,18 @@ export default {
         ],
       },
     ],
+    'jsdoc/lines-before-block': [
+      'error',
+      {
+        checkBlockStarts: false,
+        excludedTags: [
+          'type',
+        ],
+        ignoreSameLine: true,
+        ignoreSingleLines: true,
+        lines: 1,
+      },
+    ],
     'jsdoc/match-description': [
       'error',
       {
