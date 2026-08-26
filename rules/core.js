@@ -425,6 +425,7 @@ export default {
       {
         exemptAsync: true,
         exemptGenerators: false,
+        noNativeTypes: true,
         reportMissingReturnForUndefinedTypes: false,
       },
     ],
