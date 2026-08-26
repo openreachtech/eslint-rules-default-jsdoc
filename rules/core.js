@@ -507,6 +507,7 @@ export default {
         linesBetween: 1,
         reportIntraTagGroupSpacing: true,
         reportTagGroupSpacing: true,
+        tagExceptions: {},
         // See https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/defaultTagOrder.js
         tagSequence: [
           {
