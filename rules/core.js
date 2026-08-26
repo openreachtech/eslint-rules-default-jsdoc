@@ -733,6 +733,9 @@ export default {
         escapeMarkdown: false,
       },
     ],
+    'jsdoc/ts-no-empty-object-type': [
+      'error',
+    ],
     'jsdoc/valid-types': [
       'error',
       {
