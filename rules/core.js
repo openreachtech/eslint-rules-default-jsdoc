@@ -552,6 +552,15 @@ export default {
         tags: [],
       },
     ],
+    'jsdoc/require-template': [
+      'error',
+      {
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        requireSeparateTemplates: false,
+      },
+    ],
     'jsdoc/require-template-description': [
       'error',
     ],
