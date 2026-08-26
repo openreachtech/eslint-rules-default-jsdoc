@@ -374,6 +374,9 @@ export default {
     'jsdoc/require-next-description': [
       'error',
     ],
+    'jsdoc/require-next-type': [
+      'error',
+    ],
     'jsdoc/require-param': [
       'error',
       {
