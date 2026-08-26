@@ -527,6 +527,9 @@ export default {
     'jsdoc/require-yields-description': [
       'error',
     ],
+    'jsdoc/require-yields-type': [
+      'error',
+    ],
     'jsdoc/sort-tags': [
       'error',
       {
