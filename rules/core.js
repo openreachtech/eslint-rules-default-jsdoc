@@ -1,8 +1,6 @@
-'use strict'
+import jsdocPlugin from 'eslint-plugin-jsdoc'
 
-const jsdocPlugin = require('eslint-plugin-jsdoc')
-
-module.exports = {
+export default {
   plugins: {
     jsdoc: jsdocPlugin,
   },
