@@ -494,6 +494,9 @@ export default {
         ],
       },
     ],
+    'jsdoc/require-throws-description': [
+      'error',
+    ],
     'jsdoc/require-yields': [
       'error',
       {
