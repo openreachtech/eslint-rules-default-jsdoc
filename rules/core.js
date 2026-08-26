@@ -245,6 +245,7 @@ export default {
     'jsdoc/no-undefined-types': [
       'error',
       {
+        checkUsedTypedefs: false,
         definedTypes: [],
         disableReporting: false,
         markVariablesAsUsed: true,
