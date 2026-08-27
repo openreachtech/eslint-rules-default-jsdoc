@@ -1794,11 +1794,6 @@ export default [
         {
           excludeTags: [
             'example',
-            'param',
-            'returns',
-            'type',
-            'typedef',
-            'yields',
           ],
         },
       ],
