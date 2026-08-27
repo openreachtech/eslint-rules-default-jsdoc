@@ -503,6 +503,7 @@ export default {
       {
         checkConstructors: false,
         checkGetters: true,
+        enableFixer: false,
         exemptedBy: [
           'inheritdoc',
         ],
