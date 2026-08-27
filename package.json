@@ -32,5 +32,9 @@
   },
   "overrides": {
     "flatted": "^3.4.4"
+  },
+  "allowScripts": {
+    "fsevents": false,
+    "unrs-resolver": false
   }
 }
