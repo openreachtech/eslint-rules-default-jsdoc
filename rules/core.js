@@ -96,6 +96,9 @@ export default {
         typed: false,
       },
     ],
+    'jsdoc/check-template-names': [
+      'error',
+    ],
     'jsdoc/check-types': [
       'error',
       {
@@ -113,10 +116,41 @@ export default {
         licensePattern: '/([^\\\\n\\\\r]*)/gu',
       },
     ],
+    'jsdoc/convert-to-jsdoc-comments': [
+      'error',
+      {
+        allowedPrefixes: [
+          '@ts-',
+          'istanbul ',
+          'c8 ',
+          'v8 ',
+          'eslint',
+          'prettier-',
+        ],
+        contexts: [],
+        contextsAfter: [],
+        contextsBeforeAndAfter: [
+          'VariableDeclarator',
+          'TSPropertySignature',
+          'PropertyDefinition',
+        ],
+        enableFixer: true,
+        enforceJsdocLineStyle: 'multi',
+        lineOrBlockStyle: 'both',
+      },
+    ],
     'jsdoc/empty-tags': [
       'error',
       {
         tags: [],
+      },
+    ],
+    'jsdoc/escape-inline-tags': [
+      'error',
+      {
+        allowedInlineTags: [],
+        enableFixer: false,
+        fixType: 'backslash',
       },
     ],
     'jsdoc/implements-on-classes': [
@@ -148,6 +182,18 @@ export default {
           's',
           'the',
         ],
+      },
+    ],
+    'jsdoc/lines-before-block': [
+      'error',
+      {
+        checkBlockStarts: false,
+        excludedTags: [
+          'type',
+        ],
+        ignoreSameLine: true,
+        ignoreSingleLines: true,
+        lines: 1,
       },
     ],
     'jsdoc/match-description': [
@@ -260,6 +306,28 @@ export default {
         markVariablesAsUsed: true,
       },
     ],
+    'jsdoc/normalize-see-links': [
+      'error',
+      {
+        canonicalForm: 'pipe',
+        enableFixer: true,
+        wrapBareUrls: false,
+      },
+    ],
+    'jsdoc/prefer-import-tag': [
+      'error',
+      {
+        enableFixer: true,
+        exemptTypedefs: true,
+        outputType: 'namespaced-import',
+      },
+    ],
+    'jsdoc/reject-any-type': [
+      'error',
+    ],
+    'jsdoc/reject-function-type': [
+      'error',
+    ],
     'jsdoc/require-asterisk-prefix': [
       'error',
       'always',
@@ -362,6 +430,12 @@ export default {
         skipInterveningOverloadedDeclarations: true,
       },
     ],
+    'jsdoc/require-next-description': [
+      'error',
+    ],
+    'jsdoc/require-next-type': [
+      'error',
+    ],
     'jsdoc/require-param': [
       'error',
       {
@@ -417,6 +491,15 @@ export default {
     'jsdoc/require-property-type': [
       'error',
     ],
+    'jsdoc/require-rejects': [
+      'error',
+      {
+        contexts: [],
+        exemptedBy: [
+          'inheritdoc',
+        ],
+      },
+    ],
     'jsdoc/require-returns': [
       'error',
       {
@@ -463,6 +546,24 @@ export default {
         ],
       },
     ],
+    'jsdoc/require-tags': [
+      'error',
+      {
+        tags: [],
+      },
+    ],
+    'jsdoc/require-template': [
+      'error',
+      {
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        requireSeparateTemplates: false,
+      },
+    ],
+    'jsdoc/require-template-description': [
+      'error',
+    ],
     'jsdoc/require-throws': [
       'error',
       {
@@ -475,6 +576,12 @@ export default {
           'FunctionExpression',
         ],
       },
+    ],
+    'jsdoc/require-throws-description': [
+      'error',
+    ],
+    'jsdoc/require-throws-type': [
+      'error',
     ],
     'jsdoc/require-yields': [
       'error',
@@ -499,6 +606,12 @@ export default {
         checkGeneratorsOnly: false,
         next: false,
       },
+    ],
+    'jsdoc/require-yields-description': [
+      'error',
+    ],
+    'jsdoc/require-yields-type': [
+      'error',
     ],
     'jsdoc/sort-tags': [
       'error',
@@ -701,6 +814,63 @@ export default {
       {
         escapeHTML: false,
         escapeMarkdown: false,
+      },
+    ],
+    'jsdoc/ts-method-signature-style': [
+      'error',
+      'property',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/ts-no-empty-object-type': [
+      'error',
+    ],
+    'jsdoc/ts-no-unnecessary-template-expression': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/ts-prefer-function-type': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/type-formatting': [
+      'error',
+      {
+        arrayBrackets: 'square',
+        arrowFunctionPostReturnMarkerSpacing: ' ',
+        arrowFunctionPreReturnMarkerSpacing: ' ',
+        enableFixer: true,
+        functionOrClassParameterSpacing: ' ',
+        functionOrClassPostGenericSpacing: '',
+        functionOrClassPostReturnMarkerSpacing: ' ',
+        functionOrClassPreReturnMarkerSpacing: '',
+        functionOrClassTypeParameterSpacing: ' ',
+        genericAndTupleElementSpacing: ' ',
+        genericDot: false,
+        keyValuePostColonSpacing: ' ',
+        keyValuePostKeySpacing: '',
+        keyValuePostOptionalSpacing: '',
+        keyValuePostVariadicSpacing: '',
+        methodQuotes: 'double',
+        objectFieldIndent: '',
+        objectFieldQuote: null,
+        objectFieldSeparator: 'comma',
+        objectFieldSeparatorOptionalLinebreak: true,
+        objectFieldSeparatorTrailingPunctuation: false,
+        objectTypeBracketSpacing: '',
+        parameterDefaultValueSpacing: ' ',
+        postMethodNameSpacing: '',
+        postNewSpacing: ' ',
+        separatorForSingleObjectField: false,
+        stringQuotes: 'double',
+        trailingPunctuationMultilineOnly: false,
+        typeBracketSpacing: '',
+        unionSpacing: ' ',
       },
     ],
     'jsdoc/valid-types': [
