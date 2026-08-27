@@ -1780,4 +1780,15 @@ export default [
       'id-length': 'off',
     },
   },
+
+  // Turn off some rules that forbid typing the JSDoc of a JavaScript source.
+  {
+    files: [
+      'tests/tools/*.js',
+    ],
+    rules: {
+      'jsdoc/no-types': 'off',
+      'jsdoc/require-example': 'off',
+    },
+  },
 ]
