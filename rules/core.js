@@ -105,7 +105,7 @@ export default {
     'jsdoc/check-values': [
       'error',
       {
-        allowedAuthors: [],
+        // allowedAuthors: null, // The schema accepts an array only
         allowedLicenses: [],
         numericOnlyVariation: false,
         licensePattern: '/([^\\\\n\\\\r]*)/gu',
