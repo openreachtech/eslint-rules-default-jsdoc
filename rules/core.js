@@ -509,6 +509,7 @@ export default {
         ],
         forceRequireReturn: false,
         forceReturnsWithAsync: false,
+        publicOnly: false,
         contexts: [
           'ArrowFunctionExpression',
           'FunctionDeclaration',
