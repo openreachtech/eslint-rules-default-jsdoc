@@ -1923,7 +1923,7 @@ export default [
           ],
           noFinalLineText: true,
           noMultilineBlocks: false,
-          noSingleLineBlocks: true,
+          noSingleLineBlocks: true, // false
           noZeroLineText: true,
           singleLineTags: [
             'lends',
