@@ -1770,4 +1770,14 @@ export default [
       ],
     },
   },
+
+  // Turn off some rules to declare the default options as they are.
+  {
+    files: [
+      'rules/core.js',
+    ],
+    rules: {
+      'id-length': 'off',
+    },
+  },
 ]
