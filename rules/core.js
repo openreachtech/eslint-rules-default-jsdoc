@@ -170,6 +170,7 @@ export default {
             'our',
           ],
         },
+        excludedTags: [],
         uselessWords: [
           'a',
           'an',
