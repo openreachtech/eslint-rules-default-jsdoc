@@ -1917,6 +1917,7 @@ export default [
         'error',
         {
           allowMultipleTags: true,
+          minimumLengthForMultiline: Infinity,
           multilineTags: [
             '*',
           ],
