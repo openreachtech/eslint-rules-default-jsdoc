@@ -1933,8 +1933,6 @@ export default [
           singleLineTags: [
             'lends',
             'type',
-            'inheritdoc',
-            'override',
           ],
         },
       ],
