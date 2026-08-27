@@ -106,7 +106,7 @@ export default {
       'error',
       {
         // allowedAuthors: null, // The schema accepts an array only
-        allowedLicenses: [],
+        // allowedLicenses: null, // The schema accepts an array or a boolean only
         numericOnlyVariation: false,
         licensePattern: '/([^\\\\n\\\\r]*)/gu',
       },
