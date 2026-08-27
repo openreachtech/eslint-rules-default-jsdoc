@@ -164,10 +164,12 @@ export default {
     'jsdoc/informative-docs': [
       'error',
       {
-        aliases: [
-          'an',
-          'our',
-        ],
+        aliases: {
+          a: [
+            'an',
+            'our',
+          ],
+        },
         uselessWords: [
           'a',
           'an',
