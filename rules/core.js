@@ -20,11 +20,6 @@ export default {
         allowIndentedSections: false,
         excludeTags: [
           'example',
-          'param',
-          'returns',
-          'type',
-          'typedef',
-          'yields',
         ],
       },
     ],
@@ -110,10 +105,10 @@ export default {
     'jsdoc/check-values': [
       'error',
       {
-        allowedAuthors: [],
-        allowedLicenses: [],
+        // allowedAuthors: null, // The schema accepts an array only
+        // allowedLicenses: null, // The schema accepts an array or a boolean only
         numericOnlyVariation: false,
-        licensePattern: '/([^\\\\n\\\\r]*)/gu',
+        licensePattern: '/([^\n\r]*)/gv',
       },
     ],
     'jsdoc/convert-to-jsdoc-comments': [
@@ -169,10 +164,13 @@ export default {
     'jsdoc/informative-docs': [
       'error',
       {
-        aliases: [
-          'an',
-          'our',
-        ],
+        aliases: {
+          a: [
+            'an',
+            'our',
+          ],
+        },
+        excludedTags: [],
         uselessWords: [
           'a',
           'an',
@@ -505,11 +503,13 @@ export default {
       {
         checkConstructors: false,
         checkGetters: true,
+        enableFixer: false,
         exemptedBy: [
           'inheritdoc',
         ],
         forceRequireReturn: false,
         forceReturnsWithAsync: false,
+        publicOnly: false,
         contexts: [
           'ArrowFunctionExpression',
           'FunctionDeclaration',
@@ -876,7 +876,7 @@ export default {
     'jsdoc/valid-types': [
       'error',
       {
-        allowEmptyNamepaths: true,
+        allowEmptyNamepaths: false,
       },
     ],
   },
