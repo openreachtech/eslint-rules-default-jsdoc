@@ -1,3 +1,7 @@
+/**
+ * @import { Linter } from "eslint"
+ */
+
 import jsRules from '@eslint/js'
 import jestPlugin from 'eslint-plugin-jest'
 import openreachtechPlugin from 'eslint-plugin-openreachtech'
@@ -9,7 +13,7 @@ const jestFlatConfigRecommended = jestPlugin.configs['flat/recommended']
 /**
  * ESLint Config
  *
- * @type {Array<import('eslint').Linter.Config<*>>}
+ * @type {Array<Linter.Config>}
  */
 export default [
   {
@@ -1811,23 +1815,13 @@ export default [
             'returns',
             'return',
           ],
-          customSpacings: [
-            {
-              postDelimiter: 1,
-            },
-            {
-              postTag: 1,
-            },
-            {
-              postType: 1,
-            },
-            {
-              postName: 1,
-            },
-            {
-              postHyphen: 1,
-            },
-          ],
+          customSpacings: {
+            postDelimiter: 1,
+            postTag: 1,
+            postType: 1,
+            postName: 1,
+            postHyphen: 1,
+          },
           preserveMainDescriptionPostDelimiter: false,
           wrapIndent: '',
         },
@@ -2210,6 +2204,44 @@ export default [
         {
           escapeHTML: false,
           escapeMarkdown: false,
+        },
+      ],
+      'jsdoc/type-formatting': [
+        /*
+         * Types are written with Array<xxxx> instead of xxxx[] here.
+         */
+        'error',
+        {
+          arrayBrackets: 'angle', // 'square'
+          arrowFunctionPostReturnMarkerSpacing: ' ',
+          arrowFunctionPreReturnMarkerSpacing: ' ',
+          enableFixer: true,
+          functionOrClassParameterSpacing: ' ',
+          functionOrClassPostGenericSpacing: '',
+          functionOrClassPostReturnMarkerSpacing: ' ',
+          functionOrClassPreReturnMarkerSpacing: '',
+          functionOrClassTypeParameterSpacing: ' ',
+          genericAndTupleElementSpacing: ' ',
+          genericDot: false,
+          keyValuePostColonSpacing: ' ',
+          keyValuePostKeySpacing: '',
+          keyValuePostOptionalSpacing: '',
+          keyValuePostVariadicSpacing: '',
+          methodQuotes: 'double',
+          objectFieldIndent: '',
+          objectFieldQuote: null,
+          objectFieldSeparator: 'comma',
+          objectFieldSeparatorOptionalLinebreak: true,
+          objectFieldSeparatorTrailingPunctuation: false,
+          objectTypeBracketSpacing: '',
+          parameterDefaultValueSpacing: ' ',
+          postMethodNameSpacing: '',
+          postNewSpacing: ' ',
+          separatorForSingleObjectField: false,
+          stringQuotes: 'double',
+          trailingPunctuationMultilineOnly: false,
+          typeBracketSpacing: '',
+          unionSpacing: ' ',
         },
       ],
       'jsdoc/valid-types': [

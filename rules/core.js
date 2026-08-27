@@ -10,10 +10,14 @@ export default {
     ],
     'jsdoc/check-alignment': [
       'error',
+      {
+        innerIndent: 1,
+      },
     ],
     'jsdoc/check-indentation': [
       'error',
       {
+        allowIndentedSections: false,
         excludeTags: [
           'example',
           'param',
@@ -37,23 +41,13 @@ export default {
           'returns',
           'return',
         ],
-        customSpacings: [
-          {
-            postDelimiter: 1,
-          },
-          {
-            postTag: 1,
-          },
-          {
-            postType: 1,
-          },
-          {
-            postName: 1,
-          },
-          {
-            postHyphen: 1,
-          },
-        ],
+        customSpacings: {
+          postDelimiter: 1,
+          postTag: 1,
+          postType: 1,
+          postName: 1,
+          postHyphen: 1,
+        },
         preserveMainDescriptionPostDelimiter: false,
         wrapIndent: '',
       },
@@ -62,10 +56,14 @@ export default {
       'error',
       {
         allowExtraTrailingParamDocs: false,
+        badParamNames: false,
+        badParamOrder: true,
         checkDestructured: true,
         checkRestProperty: false,
         checkTypesPattern: '/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/',
+        duplicateParams: true,
         enableFixer: false,
+        extraParams: false,
         disableExtraPropertyReporting: false,
         useDefaultObjectProperties: false,
       },
@@ -84,9 +82,22 @@ export default {
       {
         definedTags: [],
         enableFixer: true,
+        inlineTags: [
+          'link',
+          'linkcode',
+          'linkplain',
+          'tutorial',
+          'inheritDoc',
+          'label',
+          'include',
+          'includeCode',
+        ],
         jsxTags: false,
         typed: false,
       },
+    ],
+    'jsdoc/check-template-names': [
+      'error',
     ],
     'jsdoc/check-types': [
       'error',
@@ -105,10 +116,41 @@ export default {
         licensePattern: '/([^\\\\n\\\\r]*)/gu',
       },
     ],
+    'jsdoc/convert-to-jsdoc-comments': [
+      'error',
+      {
+        allowedPrefixes: [
+          '@ts-',
+          'istanbul ',
+          'c8 ',
+          'v8 ',
+          'eslint',
+          'prettier-',
+        ],
+        contexts: [],
+        contextsAfter: [],
+        contextsBeforeAndAfter: [
+          'VariableDeclarator',
+          'TSPropertySignature',
+          'PropertyDefinition',
+        ],
+        enableFixer: true,
+        enforceJsdocLineStyle: 'multi',
+        lineOrBlockStyle: 'both',
+      },
+    ],
     'jsdoc/empty-tags': [
       'error',
       {
         tags: [],
+      },
+    ],
+    'jsdoc/escape-inline-tags': [
+      'error',
+      {
+        allowedInlineTags: [],
+        enableFixer: false,
+        fixType: 'backslash',
       },
     ],
     'jsdoc/implements-on-classes': [
@@ -142,6 +184,18 @@ export default {
         ],
       },
     ],
+    'jsdoc/lines-before-block': [
+      'error',
+      {
+        checkBlockStarts: false,
+        excludedTags: [
+          'type',
+        ],
+        ignoreSameLine: true,
+        ignoreSingleLines: true,
+        lines: 1,
+      },
+    ],
     'jsdoc/match-description': [
       'error',
       {
@@ -170,6 +224,11 @@ export default {
         noMultilineBlocks: false,
         noSingleLineBlocks: false,
         noZeroLineText: true,
+        // requireSingleLineUnderCount: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         singleLineTags: [
           'lends',
           'type',
@@ -241,10 +300,33 @@ export default {
     'jsdoc/no-undefined-types': [
       'error',
       {
+        checkUsedTypedefs: false,
         definedTypes: [],
         disableReporting: false,
         markVariablesAsUsed: true,
       },
+    ],
+    'jsdoc/normalize-see-links': [
+      'error',
+      {
+        canonicalForm: 'pipe',
+        enableFixer: true,
+        wrapBareUrls: false,
+      },
+    ],
+    'jsdoc/prefer-import-tag': [
+      'error',
+      {
+        enableFixer: true,
+        exemptTypedefs: true,
+        outputType: 'namespaced-import',
+      },
+    ],
+    'jsdoc/reject-any-type': [
+      'error',
+    ],
+    'jsdoc/reject-function-type': [
+      'error',
     ],
     'jsdoc/require-asterisk-prefix': [
       'error',
@@ -318,6 +400,7 @@ export default {
     'jsdoc/require-jsdoc': [
       'error',
       {
+        checkAllFunctionExpressions: false,
         checkConstructors: true,
         checkGetters: true,
         checkSetters: true,
@@ -332,6 +415,7 @@ export default {
         enableFixer: true,
         exemptEmptyConstructors: true,
         exemptEmptyFunctions: false,
+        exemptOverloadedImplementations: false,
         fixerMessage: '',
         minLineCount: undefined,
         publicOnly: false,
@@ -343,7 +427,14 @@ export default {
           FunctionExpression: false,
           MethodDefinition: false,
         },
+        skipInterveningOverloadedDeclarations: true,
       },
+    ],
+    'jsdoc/require-next-description': [
+      'error',
+    ],
+    'jsdoc/require-next-type': [
+      'error',
     ],
     'jsdoc/require-param': [
       'error',
@@ -356,6 +447,8 @@ export default {
         enableFixer: true,
         enableRootFixer: true,
         enableRestElementFixer: true,
+        ignoreWhenAllParamsMissing: false,
+        interfaceExemptsParamsCheck: false,
         unnamedRootBase: [
           'root',
         ],
@@ -398,6 +491,15 @@ export default {
     'jsdoc/require-property-type': [
       'error',
     ],
+    'jsdoc/require-rejects': [
+      'error',
+      {
+        contexts: [],
+        exemptedBy: [
+          'inheritdoc',
+        ],
+      },
+    ],
     'jsdoc/require-returns': [
       'error',
       {
@@ -420,6 +522,7 @@ export default {
       {
         exemptAsync: true,
         exemptGenerators: false,
+        noNativeTypes: true,
         reportMissingReturnForUndefinedTypes: false,
       },
     ],
@@ -443,6 +546,24 @@ export default {
         ],
       },
     ],
+    'jsdoc/require-tags': [
+      'error',
+      {
+        tags: [],
+      },
+    ],
+    'jsdoc/require-template': [
+      'error',
+      {
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        requireSeparateTemplates: false,
+      },
+    ],
+    'jsdoc/require-template-description': [
+      'error',
+    ],
     'jsdoc/require-throws': [
       'error',
       {
@@ -455,6 +576,12 @@ export default {
           'FunctionExpression',
         ],
       },
+    ],
+    'jsdoc/require-throws-description': [
+      'error',
+    ],
+    'jsdoc/require-throws-type': [
+      'error',
     ],
     'jsdoc/require-yields': [
       'error',
@@ -480,6 +607,12 @@ export default {
         next: false,
       },
     ],
+    'jsdoc/require-yields-description': [
+      'error',
+    ],
+    'jsdoc/require-yields-type': [
+      'error',
+    ],
     'jsdoc/sort-tags': [
       'error',
       {
@@ -487,6 +620,7 @@ export default {
         linesBetween: 1,
         reportIntraTagGroupSpacing: true,
         reportTagGroupSpacing: true,
+        tagExceptions: {},
         // See https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/defaultTagOrder.js
         tagSequence: [
           {
@@ -662,7 +796,13 @@ export default {
       'never',
       {
         count: 1,
+        maxBlockLines: null,
         startLines: 0,
+        // startLinesWithNoTags: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         endLines: 0,
         applyToEndTag: true,
         tags: {},
@@ -674,6 +814,63 @@ export default {
       {
         escapeHTML: false,
         escapeMarkdown: false,
+      },
+    ],
+    'jsdoc/ts-method-signature-style': [
+      'error',
+      'property',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/ts-no-empty-object-type': [
+      'error',
+    ],
+    'jsdoc/ts-no-unnecessary-template-expression': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/ts-prefer-function-type': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/type-formatting': [
+      'error',
+      {
+        arrayBrackets: 'square',
+        arrowFunctionPostReturnMarkerSpacing: ' ',
+        arrowFunctionPreReturnMarkerSpacing: ' ',
+        enableFixer: true,
+        functionOrClassParameterSpacing: ' ',
+        functionOrClassPostGenericSpacing: '',
+        functionOrClassPostReturnMarkerSpacing: ' ',
+        functionOrClassPreReturnMarkerSpacing: '',
+        functionOrClassTypeParameterSpacing: ' ',
+        genericAndTupleElementSpacing: ' ',
+        genericDot: false,
+        keyValuePostColonSpacing: ' ',
+        keyValuePostKeySpacing: '',
+        keyValuePostOptionalSpacing: '',
+        keyValuePostVariadicSpacing: '',
+        methodQuotes: 'double',
+        objectFieldIndent: '',
+        objectFieldQuote: null,
+        objectFieldSeparator: 'comma',
+        objectFieldSeparatorOptionalLinebreak: true,
+        objectFieldSeparatorTrailingPunctuation: false,
+        objectTypeBracketSpacing: '',
+        parameterDefaultValueSpacing: ' ',
+        postMethodNameSpacing: '',
+        postNewSpacing: ' ',
+        separatorForSingleObjectField: false,
+        stringQuotes: 'double',
+        trailingPunctuationMultilineOnly: false,
+        typeBracketSpacing: '',
+        unionSpacing: ' ',
       },
     ],
     'jsdoc/valid-types': [
