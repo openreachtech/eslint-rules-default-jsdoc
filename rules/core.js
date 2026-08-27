@@ -871,7 +871,7 @@ export default {
     'jsdoc/valid-types': [
       'error',
       {
-        allowEmptyNamepaths: true,
+        allowEmptyNamepaths: false,
       },
     ],
   },
