@@ -108,7 +108,7 @@ export default {
         // allowedAuthors: null, // The schema accepts an array only
         // allowedLicenses: null, // The schema accepts an array or a boolean only
         numericOnlyVariation: false,
-        licensePattern: '/([^\\\\n\\\\r]*)/gu',
+        licensePattern: '/([^\n\r]*)/gv',
       },
     ],
     'jsdoc/convert-to-jsdoc-comments': [
