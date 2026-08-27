@@ -20,11 +20,6 @@ export default {
         allowIndentedSections: false,
         excludeTags: [
           'example',
-          'param',
-          'returns',
-          'type',
-          'typedef',
-          'yields',
         ],
       },
     ],
