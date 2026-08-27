@@ -1794,11 +1794,6 @@ export default [
         {
           excludeTags: [
             'example',
-            'param',
-            'returns',
-            'type',
-            'typedef',
-            'yields',
           ],
         },
       ],
@@ -1922,18 +1917,22 @@ export default [
         'error',
         {
           allowMultipleTags: true,
+          minimumLengthForMultiline: Infinity,
           multilineTags: [
             '*',
           ],
           noFinalLineText: true,
           noMultilineBlocks: false,
-          noSingleLineBlocks: true,
+          noSingleLineBlocks: true, // false
           noZeroLineText: true,
+          // requireSingleLineUnderCount: null,
+          /*
+           * The default is null, but the schema accepts a number only.
+           * Therefore, we cannot give the default explicitly here.
+           */
           singleLineTags: [
             'lends',
             'type',
-            'inheritdoc',
-            'override',
           ],
         },
       ],
