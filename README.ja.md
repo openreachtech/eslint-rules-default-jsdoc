@@ -55,6 +55,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0
           endLines: 0,
           applyToEndTag: true,
@@ -94,6 +95,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0 <--- ✅
           endLines: 0,
           applyToEndTag: true,
