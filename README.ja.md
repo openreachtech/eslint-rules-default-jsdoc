@@ -19,14 +19,7 @@
 
 ### Installing
 
-`.npmrc` に以下を追加してください。
-
-```
-// .npmrc
-@openreachtech:registry=https://npm.pkg.github.com
-```
-
-ESLint v9 以降と一緒に此のパッケージをインストールします。
+ESLint v10 以降と一緒に此のパッケージをインストールします。
 
 ```sh
 npm install --save-dev \
@@ -52,7 +45,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true
+          allowWhitespace: true, // false
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -62,6 +55,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0
           endLines: 0,
           applyToEndTag: true,
@@ -91,7 +85,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true <--- ✅
+          allowWhitespace: true, // false <--- ✅
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -101,6 +95,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0 <--- ✅
           endLines: 0,
           applyToEndTag: true,
