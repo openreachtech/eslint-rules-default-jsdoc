@@ -1,8 +1,10 @@
 {
   "words": [
     "jsdoc",
+    "npmjs",
     "openreach",
     "openreachtech",
+    "unrs",
 
     "backreference",
     "camelcase",
@@ -22,6 +24,9 @@
     "plusplus",
     "ruleset",
     "rulesets",
+    "thenables",
+    "tinyint",
+    "unbumped",
     "wizaction",
 
     "noalias",
@@ -29,6 +34,10 @@
     "nocompile",
     "noinline",
     "nosideeffects",
+
+    "ehthumbs",
+    "encryptable",
+    "esac",
 
     "bject",
     "rray"
