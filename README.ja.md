@@ -11,20 +11,15 @@
 
 他の ESLint 構成リポジトリの基本ルールセットとして使用すると、すべてのルールが機能します。無効にしたいルールは、各ルールを明示的にオフにする必要があります。
 
+プラグインで deprecated となったルールは、エクスポートされるルールセットに含めません。そのため、ルール数はプラグイン本体より少なくなります。それらのディフォルトオプションは `rules/deprecated.js` に記録し、`deprecated` としてエクスポートします。2 つのルールセットを合わせるとプラグインの全ルールを網羅します。
+
 此のパッケージは、Flat Config 専用です。
 
 ## Usage
 
 ### Installing
 
-`.npmrc` に以下を追加してください。
-
-```
-// .npmrc
-@openreachtech:registry=https://npm.pkg.github.com
-```
-
-ESLint v9 以降と一緒に此のパッケージをインストールします。
+ESLint v10 以降と一緒に此のパッケージをインストールします。
 
 ```sh
 npm install --save-dev \
@@ -50,7 +45,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true
+          allowWhitespace: true, // false
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -60,6 +55,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0
           endLines: 0,
           applyToEndTag: true,
@@ -89,7 +85,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true <--- ✅
+          allowWhitespace: true, // false <--- ✅
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -99,6 +95,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0 <--- ✅
           endLines: 0,
           applyToEndTag: true,

@@ -12,20 +12,18 @@ This package provides ESLint JSDoc plugin rules with default options.
 If this package is used as a base ruleset in another ESLint config repository, all rules
 are enabled by default. You must explicitly turn off each rule that you want to disable.
 
+Rules deprecated in the plugin are not included in the exported ruleset, so it holds
+fewer rules than the plugin itself. Their default options are documented in
+`rules/deprecated.js` and exported as `deprecated`. The two rulesets together cover
+every rule of the plugin.
+
 This package is only for Flat Config.
 
 ## Usage
 
 ### Installing
 
-Please add the following line to your `.npmrc` file.
-
-```
-// .npmrc
-@openreachtech:registry=https://npm.pkg.github.com
-```
-
-Install this package alongside ESLint v9 or greater:
+Install this package alongside ESLint v10 or greater:
 
 ```sh
 npm install --save-dev \
@@ -51,7 +49,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true
+          allowWhitespace: true, // false
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -61,6 +59,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0
           endLines: 0,
           applyToEndTag: true,
@@ -90,7 +89,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true <--- ✅
+          allowWhitespace: true, // false <--- ✅
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -100,6 +99,7 @@ export default [
         'never',
         {
           count: 1,
+          maxBlockLines: null,
           startLines: 1, // 0 <--- ✅
           endLines: 0,
           applyToEndTag: true,
@@ -135,4 +135,4 @@ We strive to meet user expectations and your contributions are highly appreciate
 
 ## Authors
 
-* [Open Reach Tech inc.](https://openreach.tech)
+* [Open Reach Tech Inc.](https://openreach.tech)

@@ -1,8 +1,6 @@
-'use strict'
+import jsdocPlugin from 'eslint-plugin-jsdoc'
 
-const jsdocPlugin = require('eslint-plugin-jsdoc')
-
-module.exports = {
+export default {
   plugins: {
     jsdoc: jsdocPlugin,
   },
@@ -12,17 +10,16 @@ module.exports = {
     ],
     'jsdoc/check-alignment': [
       'error',
+      {
+        innerIndent: 1,
+      },
     ],
     'jsdoc/check-indentation': [
       'error',
       {
+        allowIndentedSections: false,
         excludeTags: [
           'example',
-          'param',
-          'returns',
-          'type',
-          'typedef',
-          'yields',
         ],
       },
     ],
@@ -39,23 +36,13 @@ module.exports = {
           'returns',
           'return',
         ],
-        customSpacings: [
-          {
-            postDelimiter: 1,
-          },
-          {
-            postTag: 1,
-          },
-          {
-            postType: 1,
-          },
-          {
-            postName: 1,
-          },
-          {
-            postHyphen: 1,
-          },
-        ],
+        customSpacings: {
+          postDelimiter: 1,
+          postTag: 1,
+          postType: 1,
+          postName: 1,
+          postHyphen: 1,
+        },
         preserveMainDescriptionPostDelimiter: false,
         wrapIndent: '',
       },
@@ -64,10 +51,14 @@ module.exports = {
       'error',
       {
         allowExtraTrailingParamDocs: false,
+        badParamNames: false,
+        badParamOrder: true,
         checkDestructured: true,
         checkRestProperty: false,
         checkTypesPattern: '/^(?:[oO]bject|[aA]rray|PlainObject|Generic(?:Object|Array))$/',
+        duplicateParams: true,
         enableFixer: false,
+        extraParams: false,
         disableExtraPropertyReporting: false,
         useDefaultObjectProperties: false,
       },
@@ -86,9 +77,22 @@ module.exports = {
       {
         definedTags: [],
         enableFixer: true,
+        inlineTags: [
+          'link',
+          'linkcode',
+          'linkplain',
+          'tutorial',
+          'inheritDoc',
+          'label',
+          'include',
+          'includeCode',
+        ],
         jsxTags: false,
         typed: false,
       },
+    ],
+    'jsdoc/check-template-names': [
+      'error',
     ],
     'jsdoc/check-types': [
       'error',
@@ -101,16 +105,47 @@ module.exports = {
     'jsdoc/check-values': [
       'error',
       {
-        allowedAuthors: [],
-        allowedLicenses: [],
+        // allowedAuthors: null, // The schema accepts an array only
+        // allowedLicenses: null, // The schema accepts an array or a boolean only
         numericOnlyVariation: false,
-        licensePattern: '/([^\\\\n\\\\r]*)/gu',
+        licensePattern: '/([^\n\r]*)/gv',
+      },
+    ],
+    'jsdoc/convert-to-jsdoc-comments': [
+      'error',
+      {
+        allowedPrefixes: [
+          '@ts-',
+          'istanbul ',
+          'c8 ',
+          'v8 ',
+          'eslint',
+          'prettier-',
+        ],
+        contexts: [],
+        contextsAfter: [],
+        contextsBeforeAndAfter: [
+          'VariableDeclarator',
+          'TSPropertySignature',
+          'PropertyDefinition',
+        ],
+        enableFixer: true,
+        enforceJsdocLineStyle: 'multi',
+        lineOrBlockStyle: 'both',
       },
     ],
     'jsdoc/empty-tags': [
       'error',
       {
         tags: [],
+      },
+    ],
+    'jsdoc/escape-inline-tags': [
+      'error',
+      {
+        allowedInlineTags: [],
+        enableFixer: false,
+        fixType: 'backslash',
       },
     ],
     'jsdoc/implements-on-classes': [
@@ -129,10 +164,13 @@ module.exports = {
     'jsdoc/informative-docs': [
       'error',
       {
-        aliases: [
-          'an',
-          'our',
-        ],
+        aliases: {
+          a: [
+            'an',
+            'our',
+          ],
+        },
+        excludedTags: [],
         uselessWords: [
           'a',
           'an',
@@ -142,6 +180,18 @@ module.exports = {
           's',
           'the',
         ],
+      },
+    ],
+    'jsdoc/lines-before-block': [
+      'error',
+      {
+        checkBlockStarts: false,
+        excludedTags: [
+          'type',
+        ],
+        ignoreSameLine: true,
+        ignoreSingleLines: true,
+        lines: 1,
       },
     ],
     'jsdoc/match-description': [
@@ -172,6 +222,11 @@ module.exports = {
         noMultilineBlocks: false,
         noSingleLineBlocks: false,
         noZeroLineText: true,
+        // requireSingleLineUnderCount: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         singleLineTags: [
           'lends',
           'type',
@@ -243,10 +298,33 @@ module.exports = {
     'jsdoc/no-undefined-types': [
       'error',
       {
+        checkUsedTypedefs: false,
         definedTypes: [],
         disableReporting: false,
         markVariablesAsUsed: true,
       },
+    ],
+    'jsdoc/normalize-see-links': [
+      'error',
+      {
+        canonicalForm: 'pipe',
+        enableFixer: true,
+        wrapBareUrls: false,
+      },
+    ],
+    'jsdoc/prefer-import-tag': [
+      'error',
+      {
+        enableFixer: true,
+        exemptTypedefs: true,
+        outputType: 'namespaced-import',
+      },
+    ],
+    'jsdoc/reject-any-type': [
+      'error',
+    ],
+    'jsdoc/reject-function-type': [
+      'error',
     ],
     'jsdoc/require-asterisk-prefix': [
       'error',
@@ -320,6 +398,7 @@ module.exports = {
     'jsdoc/require-jsdoc': [
       'error',
       {
+        checkAllFunctionExpressions: false,
         checkConstructors: true,
         checkGetters: true,
         checkSetters: true,
@@ -334,6 +413,7 @@ module.exports = {
         enableFixer: true,
         exemptEmptyConstructors: true,
         exemptEmptyFunctions: false,
+        exemptOverloadedImplementations: false,
         fixerMessage: '',
         minLineCount: undefined,
         publicOnly: false,
@@ -345,7 +425,14 @@ module.exports = {
           FunctionExpression: false,
           MethodDefinition: false,
         },
+        skipInterveningOverloadedDeclarations: true,
       },
+    ],
+    'jsdoc/require-next-description': [
+      'error',
+    ],
+    'jsdoc/require-next-type': [
+      'error',
     ],
     'jsdoc/require-param': [
       'error',
@@ -358,6 +445,8 @@ module.exports = {
         enableFixer: true,
         enableRootFixer: true,
         enableRestElementFixer: true,
+        ignoreWhenAllParamsMissing: false,
+        interfaceExemptsParamsCheck: false,
         unnamedRootBase: [
           'root',
         ],
@@ -400,16 +489,27 @@ module.exports = {
     'jsdoc/require-property-type': [
       'error',
     ],
+    'jsdoc/require-rejects': [
+      'error',
+      {
+        contexts: [],
+        exemptedBy: [
+          'inheritdoc',
+        ],
+      },
+    ],
     'jsdoc/require-returns': [
       'error',
       {
         checkConstructors: false,
         checkGetters: true,
+        enableFixer: false,
         exemptedBy: [
           'inheritdoc',
         ],
         forceRequireReturn: false,
         forceReturnsWithAsync: false,
+        publicOnly: false,
         contexts: [
           'ArrowFunctionExpression',
           'FunctionDeclaration',
@@ -422,6 +522,7 @@ module.exports = {
       {
         exemptAsync: true,
         exemptGenerators: false,
+        noNativeTypes: true,
         reportMissingReturnForUndefinedTypes: false,
       },
     ],
@@ -445,6 +546,24 @@ module.exports = {
         ],
       },
     ],
+    'jsdoc/require-tags': [
+      'error',
+      {
+        tags: [],
+      },
+    ],
+    'jsdoc/require-template': [
+      'error',
+      {
+        exemptedBy: [
+          'inheritdoc',
+        ],
+        requireSeparateTemplates: false,
+      },
+    ],
+    'jsdoc/require-template-description': [
+      'error',
+    ],
     'jsdoc/require-throws': [
       'error',
       {
@@ -457,6 +576,12 @@ module.exports = {
           'FunctionExpression',
         ],
       },
+    ],
+    'jsdoc/require-throws-description': [
+      'error',
+    ],
+    'jsdoc/require-throws-type': [
+      'error',
     ],
     'jsdoc/require-yields': [
       'error',
@@ -482,6 +607,12 @@ module.exports = {
         next: false,
       },
     ],
+    'jsdoc/require-yields-description': [
+      'error',
+    ],
+    'jsdoc/require-yields-type': [
+      'error',
+    ],
     'jsdoc/sort-tags': [
       'error',
       {
@@ -489,6 +620,7 @@ module.exports = {
         linesBetween: 1,
         reportIntraTagGroupSpacing: true,
         reportTagGroupSpacing: true,
+        tagExceptions: {},
         // See https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/defaultTagOrder.js
         tagSequence: [
           {
@@ -664,7 +796,13 @@ module.exports = {
       'never',
       {
         count: 1,
+        maxBlockLines: null,
         startLines: 0,
+        // startLinesWithNoTags: null,
+        /*
+         * The default is null, but the schema accepts a number only.
+         * Therefore, we cannot give the default explicitly here.
+         */
         endLines: 0,
         applyToEndTag: true,
         tags: {},
@@ -678,10 +816,67 @@ module.exports = {
         escapeMarkdown: false,
       },
     ],
+    'jsdoc/ts-method-signature-style': [
+      'error',
+      'property',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/ts-no-empty-object-type': [
+      'error',
+    ],
+    'jsdoc/ts-no-unnecessary-template-expression': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/ts-prefer-function-type': [
+      'error',
+      {
+        enableFixer: true,
+      },
+    ],
+    'jsdoc/type-formatting': [
+      'error',
+      {
+        arrayBrackets: 'square',
+        arrowFunctionPostReturnMarkerSpacing: ' ',
+        arrowFunctionPreReturnMarkerSpacing: ' ',
+        enableFixer: true,
+        functionOrClassParameterSpacing: ' ',
+        functionOrClassPostGenericSpacing: '',
+        functionOrClassPostReturnMarkerSpacing: ' ',
+        functionOrClassPreReturnMarkerSpacing: '',
+        functionOrClassTypeParameterSpacing: ' ',
+        genericAndTupleElementSpacing: ' ',
+        genericDot: false,
+        keyValuePostColonSpacing: ' ',
+        keyValuePostKeySpacing: '',
+        keyValuePostOptionalSpacing: '',
+        keyValuePostVariadicSpacing: '',
+        methodQuotes: 'double',
+        objectFieldIndent: '',
+        objectFieldQuote: null,
+        objectFieldSeparator: 'comma',
+        objectFieldSeparatorOptionalLinebreak: true,
+        objectFieldSeparatorTrailingPunctuation: false,
+        objectTypeBracketSpacing: '',
+        parameterDefaultValueSpacing: ' ',
+        postMethodNameSpacing: '',
+        postNewSpacing: ' ',
+        separatorForSingleObjectField: false,
+        stringQuotes: 'double',
+        trailingPunctuationMultilineOnly: false,
+        typeBracketSpacing: '',
+        unionSpacing: ' ',
+      },
+    ],
     'jsdoc/valid-types': [
       'error',
       {
-        allowEmptyNamepaths: true,
+        allowEmptyNamepaths: false,
       },
     ],
   },
