@@ -45,7 +45,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true
+          allowWhitespace: true, // false
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
@@ -84,7 +84,7 @@ export default [
       'jsdoc/no-multi-asterisks': [
         'error',
         {
-          allowWhitespace: false, // true <--- ✅
+          allowWhitespace: true, // false <--- ✅
           preventAtEnd: true,
           preventAtMiddleLines: true,
         },
