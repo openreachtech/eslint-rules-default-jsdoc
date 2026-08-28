@@ -24,6 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/openreachtech/eslint-rules-default-jsdoc.git"
   },
+  "homepage": "https://github.com/openreachtech/eslint-rules-default-jsdoc#readme",
   "dependencies": {
     "eslint-plugin-jsdoc": "^64.2.1"
   },
