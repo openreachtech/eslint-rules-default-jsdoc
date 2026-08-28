@@ -2,6 +2,7 @@
   "name": "@openreachtech/eslint-rules-default-jsdoc",
   "version": "1.0.3",
   "description": "A showcasing package all the JSDoc plugin rules of ESLint.",
+  "type": "module",
   "main": "index.js",
   "files": [
     "index.js",
@@ -14,20 +15,19 @@
     "lint": "eslint .",
     "test": "export NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\"; jest --maxWorkers=5"
   },
-  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openreachtech/eslint-rules-default-jsdoc.git"
+  },
   "keywords": [
     "ESLint"
   ],
   "author": "Open Reach Tech Inc.",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/openreachtech/eslint-rules-default-jsdoc.git"
-  },
-  "homepage": "https://github.com/openreachtech/eslint-rules-default-jsdoc#readme",
   "bugs": {
     "url": "https://github.com/openreachtech/eslint-rules-default-jsdoc/issues"
   },
+  "homepage": "https://github.com/openreachtech/eslint-rules-default-jsdoc#readme",
   "dependencies": {
     "eslint-plugin-jsdoc": "^64.2.1"
   },
