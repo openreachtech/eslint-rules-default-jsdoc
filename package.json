@@ -20,6 +20,14 @@
   ],
   "author": "Open Reach Tech Inc.",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openreachtech/eslint-rules-default-jsdoc.git"
+  },
+  "homepage": "https://github.com/openreachtech/eslint-rules-default-jsdoc#readme",
+  "bugs": {
+    "url": "https://github.com/openreachtech/eslint-rules-default-jsdoc/issues"
+  },
   "dependencies": {
     "eslint-plugin-jsdoc": "^64.2.1"
   },
