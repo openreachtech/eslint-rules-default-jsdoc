@@ -6,7 +6,7 @@ import jsRules from '@eslint/js'
 import jestPlugin from 'eslint-plugin-jest'
 import openreachtechPlugin from 'eslint-plugin-openreachtech'
 
-import jsdocPlugin from './index.js'
+import jsdocPlugin from './lib/index.js'
 
 const jestFlatConfigAll = jestPlugin.configs['flat/all']
 
