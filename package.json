@@ -42,7 +42,9 @@
     "jest": "^30.4.2"
   },
   "overrides": {
-    "flatted": "^3.4.4"
+    "flatted": "^3.4.4",
+    "glob": "^14.0.2",
+    "minimatch": "^11.0.1"
   },
   "allowScripts": {
     "fsevents": false,
