@@ -1,6 +1,7 @@
 {
   "words": [
     "jsdoc",
+    "mentsu",
     "npmjs",
     "openreach",
     "openreachtech",
@@ -41,5 +42,8 @@
 
     "bject",
     "rray"
+  ],
+  "ignoreWords": [
+    "gcqx"
   ]
 }
